@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    height:100vh;
+}
+
+body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #23242a;
+    color:#d3d3d3;
+    height:100%;
+}
+
+.sidebar 
+{
+    display: flex;
+    align-items: flex-start;
+    height:100%;
+}
+
+.sidebar .box {
+    width:200px;
+    margin:30px;
+    padding:20px 20px 5px;
+    border: #d3d3d3 1px solid;
+    margin-bottom: 12px!important;
+}
+
+.sidebar .box button {
+    font-size: 1em;
+    background-color: aqua;
+    border:none;
+    padding:8px;
+    border-radius: 100px;
+    width:100%;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.sidebar .box a {
+    margin-bottom: 16px;
+    display: block;
+}
+
+.main {
+    margin-top: 1em;
+    padding:0 20px;
+}
+
+table {
+    border-spacing: 0 ;
+    border-collapse: collapse; 
+}
+tbody tr {
+    border-bottom: 1px solid #bbb;
+}
+
+tbody tr:nth-child(2n) {
+    background-color: #333333;
+}
+
+th {
+    background-color: #333333;
+    color:white;
+    min-width: 70px;
+    padding:10px 20px;
+    text-align: start;
+    cursor: pointer;
+}
+
+th:hover, .th-asc, .th-dsc {
+    background-color: #444444;
+}
+
+.th-asc::after {
+    content:"▼";
+    float: right;
+    transform: scale(0.5);
+}
+
+.th-dsc::after {
+    content:"▲";
+    float: right;
+    transform: scale(0.5);
+}
+
+td {
+    min-width: 70px;
+    padding:10px 20px;
+}

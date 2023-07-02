@@ -1,0 +1,71 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="main">
+    <div class="list-div">
+        <table id="main-table">
+            <thead>
+                <tr><th style="min-width:80px;" class="th-asc">ID</th>
+                    <th style="width:500px;">Title</th>
+                    <th style="width:120px;">Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="target-tbody">
+                <tr><td>1</td><td>Dom</td><td>35</td><td>Web Developer</td></tr>
+                <tr><td>2</td><td>Rebecca</td><td>29</td><td>Teacher</td></tr>
+                <tr><td>3</td><td>John</td><td>30</td><td>Civil Engineer</td></tr>
+                <tr><td>4</td><td>Andre</td><td>20</td><td>Dentist</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<section class="sidebar">
+    <div class="box">
+        <a href="/login"><button>Log In</button></a>
+        <a href="/login"><button>Sign up</button></a>
+        <a href="#"><button>Post</button></a>
+    </div>
+</section>
+{% endblock %}
+{% block script %}
+
+<script>
+const table = document.querySelector("#main-table")
+const sortingButtons = Array.from(table.querySelectorAll("th"))
+
+function sortTableByColumn (table, column, asc = true) {
+    const dirModifier = asc ? 1 : -1
+    const tBody = table.tBodies[0];
+    const rows = Array.from(tBody.querySelectorAll("tr"))
+
+    // sort each row
+    const sortedRows = rows.sort((a,b) => {
+        const aColText = a.querySelector(`td:nth-child(${column + 1})`).textContent.trim()
+        const bColText = b.querySelector(`td:nth-child(${column + 1})`).textContent.trim()
+
+        return aColText > bColText ? (1 * dirModifier) : (-1 * dirModifier)
+    })
+
+    tBody.innerHTML = ""
+    tBody.append(...sortedRows)
+
+    const selectedButton = sortingButtons[column] 
+
+    sortingButtons.forEach(function(otherButton){if(otherButton !== selectedButton){otherButton.classList.remove("th-asc","th-dsc")}})
+
+    selectedButton.classList.toggle("th-asc",asc);
+    selectedButton.classList.toggle("th-dsc",!asc);
+}
+
+sortingButtons.forEach(function(button,index,arr) {
+    button.addEventListener("click", function() {
+        if (button.classList.contains("th-asc")) {
+            sortTableByColumn(table,index,false)
+        } else {
+            sortTableByColumn(table,index,true) 
+        }
+    })  
+})
+</script>
+{% endblock %}
