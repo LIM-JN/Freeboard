@@ -15,7 +15,9 @@
             <p>{{post.content}}</p>
         </div>
         {% if user.nick === post.username %}
-        <button class="delete-button">Delete</button>
+        <form action="/delete/{{post.id}}" method="get">
+            <button class="delete-button">Delete</button>
+        </form>
         {% endif %}
     </div>
 </section>

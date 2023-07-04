@@ -66,4 +66,15 @@ router.get('/detail/:id', async (req,res,next) => {
     }
 })
 
+router.get('/delete/:id', async (req,res,next) => {
+    try {
+        const postId = req.params.id;
+        await Post.destroy({where:{id : postId}});
+        res.redirect('/');
+    } catch(err) {
+        console.error(err);
+        next(err);
+    }
+})
+
 module.exports = router;
