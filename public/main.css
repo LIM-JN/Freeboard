@@ -183,3 +183,20 @@ h1 {
     margin-bottom: 1.5em;
     color: #eeeeee;
 }
+
+.delete-button {
+    float:right;
+    color:red;
+    border:1px solid red;
+    font-size: 20px;
+    border-radius: 0;
+    padding:2px 8px;
+    background-color: #222;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: red;
+    color:#222
+}

@@ -14,6 +14,9 @@
         <div class="content-box">
             <p>{{post.content}}</p>
         </div>
+        {% if user.nick === post.username %}
+        <button class="delete-button">Delete</button>
+        {% endif %}
     </div>
 </section>
 <section class="sidebar">
