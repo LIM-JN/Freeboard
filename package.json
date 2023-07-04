@@ -22,7 +22,8 @@
   "description": "게시판",
   "main": "app.js",
   "scripts": {
-    "test": "nodemon app"
+    "test": "nodemon app",
+    "start": "node app.js"
   },
   "author": "Lim J",
   "license": "ISC"
