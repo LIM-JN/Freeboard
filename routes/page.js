@@ -30,22 +30,40 @@ router.get('/', async (req,res,next) => {
     }
 });
 
-router.get('/login', isNotLoggedIn, (req,res,next) => {
+router.get('/login', isNotLoggedIn, (req,res) => {
     res.render('login',{
         title: 'Login'
     });
 });
 
-router.get('/join', isNotLoggedIn, (req,res,next) => {
+router.get('/join', isNotLoggedIn, (req,res) => {
     res.render('login',{
         title: 'Sign Up'
     });
 });
 
-router.get('/write', isLoggedIn, (req,res,next) => {
+router.get('/write', isLoggedIn, (req,res) => {
     res.render('write',{
         title: 'Posting'
     });
 });
+
+router.get('/detail/:id', async (req,res,next) => {
+    try {
+        const detailId = req.params.id;
+        const post = await Post.findOne({where: {id : detailId}});
+        if (post) {
+            res.render('detail',{
+                title: post.title,
+                post,
+            })
+        } else {
+            res.status(404).send('No post Founded')
+        }
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+})
 
 module.exports = router;

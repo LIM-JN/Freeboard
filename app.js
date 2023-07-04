@@ -16,7 +16,7 @@ passportConfig();
 
 const pageRouter = require('./routes/page');
 const authRouter = require('./routes/auth');
-const postRouter = require('./routes/page')
+const postRouter = require('./routes/post')
 
 app.set('port',process.env.PORT ||3000);
 app.set('view engine','html')
@@ -52,7 +52,7 @@ app.use(passport.session());
 
 app.use('/', pageRouter);
 app.use('/auth',authRouter);
-app.use('/post',pageRouter);
+app.use('/post',postRouter);
 
 app.use((req,res,next)=> {
     const error = new Error (`${req.method} ${req.url} 라우터가 없습니다`);

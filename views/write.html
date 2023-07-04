@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="/main.css">
-</head>
-<body>
-    <form action="/post" method="post" class="write-form">
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form action="/post/" method="post" class="write-form">
         <div class="title-div">
             <label>Title</label>
             <input type="text" name="title">
@@ -18,5 +12,4 @@
         <input id="img-url" type="hidden" name="url">
         <button>Submit</button>
     </form>
-</body>
-</html>
+{% endblock %}

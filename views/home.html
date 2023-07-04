@@ -12,10 +12,14 @@
                 </tr>
             </thead>
             <tbody id="target-tbody">
-                <tr><td>1</td><td>Dom</td><td>35</td><td>Web Developer</td></tr>
-                <tr><td>2</td><td>Rebecca</td><td>29</td><td>Teacher</td></tr>
-                <tr><td>3</td><td>John</td><td>30</td><td>Civil Engineer</td></tr>
-                <tr><td>4</td><td>Andre</td><td>20</td><td>Dentist</td></tr>
+                {% for post in posts %}
+                <tr>
+                    <td><a href="/detail/{{post.id}}">{{post.id}}</a></td>
+                    <td><a href="/detail/{{post.id}}">{{post.title}}</a></td>
+                    <td><a href="/detail/{{post.id}}">{{post.username}}</a></td>
+                    <td><a href="/detail/{{post.id}}">{{post.createdAt}}</a></td>
+                </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>
@@ -27,7 +31,7 @@
         <a href="/write"><button>Post</button></a>
         <a href="/auth/logout"><button>Logout</button></a>
         {% else %}
-        <h3>please log in</h3>
+        <h3>please log in</h3><br>
         <a href="/login"><button>Login</button></a>
         <a href="/join"><button>Sign up</button></a>
         {% endif %}

@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const { isLoggedIn } = require('../middlewares/index');
-const { Post } = require('../models/post');
+const { Post } = require('../models/index');
 
 const router = express.Router();
 

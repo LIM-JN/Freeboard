@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
-</head>
-<body>
+{% extends 'layout.html' %}
+
+{% block content %}
+<section class="detail"></section>
     <div class="detail-box">
-        <h1>{{title}}</h1>
-        <h3>{{username}}</h3>
-        <p>{{content}}</p>
+        <h1>{{post.title}}</h1>
+        <h3>{{post.username}}</h3>
+        <p>{{post.createdAt}}</p>
+        <p>{{post.content}}</p>
     </div>
-</body>
-</html>
+</section>
+<section class="sidebar">
+    <div class="box">
+        {% if user %}
+        <a href="/write"><button>Post</button></a>
+        <a href="/auth/logout"><button>Logout</button></a>
+        {% else %}
+        <h3>please log in</h3><br>
+        <a href="/login"><button>Login</button></a>
+        <a href="/join"><button>Sign up</button></a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -62,12 +62,12 @@ tbody tr {
     border-bottom: 1px solid #bbb;
 }
 
-tbody tr:nth-child(2n) {
+tbody tr:hover{
     background-color: #333333;
 }
 
 th {
-    background-color: #333333;
+    background-color: #444;
     color:white;
     min-width: 70px;
     padding:10px 20px;
@@ -76,7 +76,7 @@ th {
 }
 
 th:hover, .th-asc, .th-dsc {
-    background-color: #444444;
+    background-color: #1f1f1f;
 }
 
 .th-asc::after {
@@ -93,7 +93,7 @@ th:hover, .th-asc, .th-dsc {
 
 td {
     min-width: 70px;
-    padding:10px 20px;
+    padding:0;
 }
 
 .write-form .title-div{
@@ -137,4 +137,12 @@ td {
     background-color: #ddd;
     color:#222
     
+}
+table a {
+    color:#d3d3d3;
+    text-decoration: none;
+    display:block;
+    height:100%;
+    width:100%;
+    padding:10px 20px;
 }
