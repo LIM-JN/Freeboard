@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser')
 const { sequelize } =require('./models/index');
 const passport = require('passport');
 const passportConfig = require('./passport/index');
+const helmet = require('helmet');
+const hpp = require('hpp');
 
 
 const app = express();
@@ -33,6 +35,15 @@ sequelize.sync({ force: false })
 });
 
 app.use(morgan('dev'));
+app.use(
+    helmet({
+        contentSecurityPolicy: false,
+        crossOriginEmbedderPolicy: false,
+        crossOriginResourcePolicy: false,
+    }),
+);
+app.use(hpp());
+
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false}));
