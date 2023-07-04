@@ -27,7 +27,7 @@ body {
 
 .sidebar .box {
     width:200px;
-    margin:30px;
+    margin:100px 30px 30px 30px;
     padding:20px 20px 5px;
     border: #d3d3d3 1px solid;
     margin-bottom: 12px!important;
@@ -52,6 +52,7 @@ body {
 .main {
     margin-top: 1em;
     padding:0 20px;
+    height: 80%;
 }
 
 table {
@@ -76,7 +77,7 @@ th {
 }
 
 th:hover, .th-asc, .th-dsc {
-    background-color: #1f1f1f;
+    background-color: #666;
 }
 
 .th-asc::after {
@@ -92,7 +93,7 @@ th:hover, .th-asc, .th-dsc {
 }
 
 td {
-    min-width: 70px;
+    min-width: 75px;
     padding:0;
 }
 
@@ -145,4 +146,40 @@ table a {
     height:100%;
     width:100%;
     padding:10px 20px;
+}
+.detail {
+    width: 700px;
+    height:80%;
+    color:#eeeeee;
+}
+.detail-box {
+    background-color: #333;
+}
+.detail h2{
+    color:#eee;
+    background-color: #444;
+    padding:7px 14px;
+    border-bottom: 1px solid #777;
+    border-top: 1px solid #777;
+}
+.info-box {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-bottom: 1px solid #777;
+}
+.content-box {
+    min-height:120px;
+    padding:10px;
+    display: flex;
+    align-items: center;
+}
+h1 a {
+    color: #eeeeee;
+    text-decoration: none;
+}
+h1 {
+    text-align: center;font-size: 40px;
+    margin-bottom: 1.5em;
+    color: #eeeeee;
 }
