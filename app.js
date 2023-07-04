@@ -15,6 +15,8 @@ dotenv.config();
 passportConfig();
 
 const pageRouter = require('./routes/page');
+const authRouter = require('./routes/auth');
+const postRouter = require('./routes/page')
 
 app.set('port',process.env.PORT ||3000);
 app.set('view engine','html')
@@ -49,6 +51,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', pageRouter);
+app.use('/auth',authRouter);
+app.use('/post',pageRouter);
 
 app.use((req,res,next)=> {
     const error = new Error (`${req.method} ${req.url} 라우터가 없습니다`);

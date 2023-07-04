@@ -34,7 +34,7 @@ router.post('/login',isNotLoggedIn,(req,res,next) => {
             return next(authError);
         }
         if(!user) {
-            return res.res.redirect(`/?loginError=${info.message}`)
+            return res.redirect(`/?loginError=${info.message}`)
         }
         return req.login(user, (loginError) => {
             if (loginError) {
@@ -54,4 +54,4 @@ router.get('/logout',isLoggedIn,(req,res) => {
 });
 
 
-module.exports = router();
+module.exports = router;

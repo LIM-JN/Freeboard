@@ -95,3 +95,46 @@ td {
     min-width: 70px;
     padding:10px 20px;
 }
+
+.write-form .title-div{
+    border: 1px solid #43494c;
+    font-size:1em;
+    margin-bottom: 1.25em;
+}
+.write-form .title-div label{
+    padding:4px 8px;
+    font-size:1em;
+    width: 10%;
+}
+.write-form .title-div input{
+    padding:4px 8px;
+    font-size:1em;
+    background-color: black;
+    width:660px;
+    color:#fff;
+}
+.content-div {
+    width:100%;
+}
+.content-div textarea {
+    width:100%;
+    height: 400px;
+    padding:20px;
+    font-size: 20px;
+}
+.write-form button {
+    float:right;
+    color:#fff;
+    border:1px solid #fff;
+    font-size: 20px;
+    border-radius: 0;
+    padding:2px 8px;
+    background-color: #222;
+    margin-top: 1em;
+    cursor: pointer;
+}
+.write-form button:hover {
+    background-color: #ddd;
+    color:#222
+    
+}

@@ -11,6 +11,10 @@ class Post extends Sequelize.Model {
                 type: Sequelize.STRING(30),
                 allowNull: false,
             },
+            img: {
+                type: Sequelize.STRING(200),
+                allowNull: true,
+            }
         }, {
             sequelize,
             timestamps: true,
@@ -22,7 +26,7 @@ class Post extends Sequelize.Model {
         });
     }
     static associate(db) {
-        db.Post.belongsTo(db.User, {foreignKey: "commenter", sourceKey: "nick"});
+        db.Post.belongsTo(db.User, {foreignKey: "username", targetKey: "nick"});
     }
 };
 

@@ -22,9 +22,15 @@
 </section>
 <section class="sidebar">
     <div class="box">
-        <a href="/login"><button>Log In</button></a>
+        {% if user %}
+        <h3>Welcome, {{ user.nick }}!</h3><br>
+        <a href="/write"><button>Post</button></a>
+        <a href="/auth/logout"><button>Logout</button></a>
+        {% else %}
+        <h3>please log in</h3>
+        <a href="/login"><button>Login</button></a>
         <a href="/join"><button>Sign up</button></a>
-        <a href="#"><button>Post</button></a>
+        {% endif %}
     </div>
 </section>
 {% endblock %}

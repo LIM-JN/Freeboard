@@ -20,10 +20,17 @@ class User extends Sequelize.Model {
             paranoid: false,
             charset: 'utf8mb4',
             collate: 'utf8mb4_general_ci',
+            indexes: [
+                {
+                    unique: true,
+                    fields: ['nick'],
+                    name: 'idx_users_nick'
+                }
+            ]
         });
     }
     static associate(db) {
-        db.User.hasMany(db.Post,{foreignKey: "commenter", targetKey: "nick"});
+        db.User.hasMany(db.Post,{foreignKey: "username", sourceKey: "nick"});
     }
 };
 

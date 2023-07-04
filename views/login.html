@@ -9,7 +9,7 @@
 <body>
     <div class="box">
         <form id="login-form"
-      {% if title === "Sign In" %} action="/auth/login"
+      {% if title === "Login" %} action="/auth/login"
       {% elif title === "Sign Up" %} action="/auth/join"
       {% endif %} method="post">
     <h2>{{ title }}</h2>
@@ -26,7 +26,7 @@
     <input type="submit" value="Login">
     <div class="links">
         <a href="#">Forgot Password?</a>
-        <a href="#">SignUp</a>
+        {% if title !== 'Sign Up' %}<a href="/join">Sign Up</a>{% endif %}
     </div>
 </form>
     </div>
