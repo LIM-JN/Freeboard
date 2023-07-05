@@ -5,7 +5,7 @@ const fs = require('fs');
 const sanitizeHtml = require('sanitize-html');
 
 const { isLoggedIn } = require('../middlewares/index');
-const { Post } = require('../models/index');
+const { Post,Comment } = require('../models/index');
 
 const router = express.Router();
 
@@ -42,5 +42,22 @@ router.post('/',isLoggedIn, upload2.none(), async(req,res,next) => {
         next(error);
     }
 })
+
+// POST /post/comment/:id
+router.post('/comment/:id',isLoggedIn, async(req,res,next) => {
+    try {
+        const postId = req.params.id
+        await Comment.create({
+            content: req.body.content,
+            postId,
+            username: req.user.nick,
+        })
+        res.redirect(`/detail/${postId}`);
+    } catch(err) {
+        console.error(err);
+        next(err)
+    }
+}) 
+
 
 module.exports = router;

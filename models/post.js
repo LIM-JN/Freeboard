@@ -4,7 +4,7 @@ class Post extends Sequelize.Model {
     static initiate(sequelize) {
         Post.init({
             content: {
-                type: Sequelize.STRING(255),
+                type: Sequelize.TEXT,
                 allowNull: false,
             },
             title: {
@@ -27,6 +27,7 @@ class Post extends Sequelize.Model {
     }
     static associate(db) {
         db.Post.belongsTo(db.User, {foreignKey: "username", targetKey: "nick"});
+        db.User.hasMany(db.Comment,{foreignKey: "PostId", sourceKey: "id"});
     }
 };
 

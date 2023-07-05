@@ -11,8 +11,9 @@
             <p>{{post.username}}</p>
             <p>{{post.createdAt}}</p>
         </div>
+
         <div class="content-box">
-            <p>{{post.content}}</p>
+            <span>{{post.content}}</span>
         </div>
         {% if user.nick === post.username %}
         <form action="/delete/{{post.id}}" method="get">
@@ -20,6 +21,30 @@
         </form>
         {% endif %}
     </div>
+    {% for comment in comments %}
+    <div class="comment-box">
+        <h4>{{comment.username}}</h4>
+        <span>{{comment.content}}</span>
+    </div>
+    {% endfor %}
+    <style>
+        .comment-box {
+            background-color: #333;
+            padding:4px;
+            margin: 1em 120px 0 0;
+        }
+        .comment-box h4{
+            font-weight: 400;
+        }
+
+    </style>
+    {% if user.nick %}
+    <form id="commentForm" action="/post/comment/{{post.id}}" method="post">
+        <div>{{user.nick}}</div>
+        <textarea name="content"></textarea>
+        <button class="normal-button">Submit</button>
+    </form>
+    {% endif %}
 </section>
 <section class="sidebar">
     <div class="box">

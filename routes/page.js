@@ -4,7 +4,7 @@ const router = express.Router();
 
 const { isLoggedIn,isNotLoggedIn } = require('../middlewares/index');
 
-const { User, Post } = require('../models/index')
+const { User, Post, Comment} = require('../models/index')
 
 router.use((req,res,next) => {
     res.locals.user = req.user;
@@ -52,10 +52,12 @@ router.get('/detail/:id', async (req,res,next) => {
     try {
         const detailId = req.params.id;
         const post = await Post.findOne({where: {id : detailId}});
+        const comments = await Comment.findAll({where: {postId : detailId}});
         if (post) {
             res.render('detail',{
                 title: post.title,
                 post,
+                comments
             })
         } else {
             res.status(404).send('No post Founded')
