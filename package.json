@@ -13,6 +13,7 @@
     "nunjucks": "^3.2.4",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "sanitize-html": "^2.11.0",
     "sequelize": "^6.32.1",
     "sequelize-cli": "^6.6.1"
   },

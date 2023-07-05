@@ -2,6 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const sanitizeHtml = require('sanitize-html');
 
 const { isLoggedIn } = require('../middlewares/index');
 const { Post } = require('../models/index');
@@ -27,9 +28,11 @@ const upload = multer({
 const upload2 = multer();
 router.post('/',isLoggedIn, upload2.none(), async(req,res,next) => {
     try {
-        const post = await Post.create({
-            content: req.body.content,
-            title: req.body.title,
+        const content = sanitizeHtml(req.body.content);
+        const title = sanitizeHtml(req.body.title);
+        await Post.create({
+            content,
+            title,
             img: req.body.url,
             username: req.user.nick
         })
