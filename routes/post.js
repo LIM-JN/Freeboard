@@ -46,9 +46,10 @@ router.post('/',isLoggedIn, upload2.none(), async(req,res,next) => {
 // POST /post/comment/:id
 router.post('/comment/:id',isLoggedIn, async(req,res,next) => {
     try {
-        const postId = req.params.id
+        const postId = req.params.id;
+        const content = sanitizeHtml(req.body.content);
         await Comment.create({
-            content: req.body.content,
+            content,
             postId,
             username: req.user.nick,
         })
@@ -59,5 +60,21 @@ router.post('/comment/:id',isLoggedIn, async(req,res,next) => {
     }
 }) 
 
+// POST /post/update/:id
+router.post('/update/:id',isLoggedIn, async(req,res,next) => {
+    try {
+        const postId = req.params.id;
+        const title = sanitizeHtml(req.body.title);
+        const content = sanitizeHtml(req.body.content);
+        await Post.update({
+            title,
+            content,
+        }, {where: {id:postId}});
+        res.redirect(`/detail/${postId}`);
+    } catch (err) {
+        console.error(err);
+        next(err);
+    }
+})
 
 module.exports = router;

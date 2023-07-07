@@ -79,4 +79,18 @@ router.get('/delete/:id', async (req,res,next) => {
     }
 })
 
+router.get('/update/:id',async(req,res,next) => {
+    try {
+        const postId = req.params.id;
+        const post = await Post.findOne({where: {id:postId}})
+        res.render('update',{
+            title: 'update',
+            post,
+        });
+    } catch(err) {
+        console.error(err);
+        next(err);
+    }
+})
+
 module.exports = router;

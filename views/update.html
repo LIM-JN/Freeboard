@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <form action="/post/update/{{post.id}}" method="post" class="write-form">
+        <h1>
+            <a href="/">FREEBOARD</a>
+        </h1>
+        <div class="title-div">
+            <label>Title</label>
+            <input type="text" name="title" value="{{post.title}}">
+        </div>
+        <div class="content-div">
+            <textarea name="content">{{post.content}}</textarea>
+        </div>
+        <input id="img-url" type="hidden" name="url">
+        <button class="normal-button">Update</button>
+    </form>
+{% endblock %}
