@@ -7,10 +7,10 @@
         </h1>
         <div class="title-div">
             <label>Title</label>
-            <input type="text" name="title" value="{{post.title}}">
+            <input type="text" name="title" value="{{post.title}}" required>
         </div>
         <div class="content-div">
-            <textarea name="content">{{post.content}}</textarea>
+            <textarea name="content" required>{{post.content}}</textarea>
         </div>
         <input id="img-url" type="hidden" name="url">
         <button class="normal-button">Update</button>
