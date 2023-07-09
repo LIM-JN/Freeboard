@@ -13,6 +13,9 @@
         </div>
 
         <div class="content-box">
+            {% if post.img %}
+            <div class="post-img"><img src="{{post.img}}" alt="섬네일"></div>
+            {% endif %}
             <div class="span-div">
                 <span>{{post.content}}</span>
             </div>

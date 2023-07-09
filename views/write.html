@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <form action="/post/" method="post" class="write-form">
+    <form action="/post/" method="post" class="write-form" enctype="multipart/form-data">
         <h1>
             <a href="/">FREEBOARD</a>
         </h1>
@@ -12,7 +12,35 @@
         <div class="content-div">
             <textarea name="content"></textarea>
         </div>
-        <input id="img-url" type="hidden" name="url">
+        <div>
+            <label id="img-label" for="img">사진 업로드</label>
+            <input id="img" type="file" accept="image/*">
+        </div>
+        <div class="img-preview">
+            <img id="img-preview" src="" style="display: none;" width="250" alt="미리보기">
+            <input id="img-url" type="hidden" name="url">
+        </div>
         <button class="normal-button">Submit</button>
     </form>
+{% endblock %}
+
+{% block script %}
+<script>
+        if (document.getElementById('img')) {
+      document.getElementById('img').addEventListener('change', function(e) {
+        const formData = new FormData();
+        console.log(this, this.files);
+        formData.append('img', this.files[0]);
+        axios.post('/post/img', formData)
+          .then((res) => {
+            document.getElementById('img-url').value = res.data.url;
+            document.getElementById('img-preview').src = res.data.url;
+            document.getElementById('img-preview').style.display = 'inline';
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      });
+    }
+</script>
 {% endblock %}

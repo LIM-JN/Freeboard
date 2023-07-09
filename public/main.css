@@ -171,9 +171,10 @@ table a {
 }
 .content-box {
     min-height:120px;
-    padding:10px 10px 50px 10px;
+    padding:10px 10px 70px 10px;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;   
 }
 h1 a {
     color: #eeeeee;
@@ -245,4 +246,11 @@ h1 {
 .content-box {
     position:relative;
     margin-bottom: 2.5em;
+}
+.post-img img{
+    max-width: 100%;
+    height: auto;
+}
+.post-img {
+    margin-bottom: 1em;
 }

@@ -15,7 +15,7 @@ const upload = multer({
             cb(null, 'uploads/');
         },
         filename(req,file,cb) {
-            const ext = path.extname(filename.originalname);
+            const ext = path.extname(file.originalname);
             cb(null,path.basename(file.originalname,ext) + Date.now() + ext);
         },
     }),
@@ -23,6 +23,10 @@ const upload = multer({
 });
 
 // POST /post/img
+router.post('/img',isLoggedIn, upload.single('img'),(req,res) => {
+    console.log(req.file);
+    res.json({ url: `/img/${req.file.filename}` });
+});
 
 // POST /post
 const upload2 = multer();
